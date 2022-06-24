@@ -1,12 +1,12 @@
 <?php
 $server = "localhost";
-$username = "root";
+$username = "root";//root by default
 $password = "";
 $database = "zalego";
+//inbuilt function
+$conn = mysqli_connect($server,$username,$password,$database); //parameter
 
-$conn = mysqli_connect($server,$username,$password,$database);
-
-if(isset($_POST['submitbutton']))
+if(isset($_POST['submitbutton'])) //check if form has data
 {
     $email = $_POST['email'];
     
@@ -50,7 +50,7 @@ else{
             </div>
         </div>
     </div>
-     </nav>
+     </nav> 
     <main class="p-5 mb-2 text-black">
 
         <h1>About Us</h1>
