@@ -1,3 +1,37 @@
+<?php
+$server = "localhost";
+$username = "root";
+$password = "";
+$database = "zalego";
+
+$conn = mysqli_connect($server,$username,$password,$database); 
+
+if(isset($_POST['submitbutton']))
+{
+    $fullname = $_POST['fullname'];
+    $phonenumber = $_POST['phonenumber'];
+    $email = $_POST['email'];
+    $gender = $_POST['gender'];
+    $course = $_POST['course'];
+
+    
+    $insertData = mysqli_query($conn,"INSERT INTO 
+    enrollment(fullname,phonenumber,email,gender,course)
+    VALUES('$fullname','$phonenumber','$email','$gender','$course')");
+
+if($insertData)
+{
+    echo "Data successfully submitted";
+}
+else{
+    echo "Error Occurred".mysqli_error($conn);
+}
+}
+
+?>
+
+
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,70 +62,98 @@
      <main class="p-5 mb-2 text-black">
 
         <h1>JULY SOFTWARE ENGINEERING BOOTCAMP</h1>
-
-        <ul>
-            <li>
-		<span>
-            <i class="fa-solid fa-calendar-days"></i>
-        </span>
-        <li>
-		<span>20th July 2022</span>
-           
-<br>
-        <ul>
-            <li>
-		<span>
-            <i class="fa-solid fa-location-dot"></i>
-        </span>
-        <li>
-			
-        <span>Zalego Academy Devan plaza</span>
-	         
-
+    
     </main>
-    <div class="container">
-        <div class="row">
-
-
-        </div>
-
+    <div class="row">
+      <h6>
+        <p>
+          Looking for a place to kickstart your career in technology?Whether you're local,new in town or just cruising through we've got loads of great tips and events for you
+        <p>
+      </h6>
     </div>
+    <div class="row">
+      <h2>Sign up today?</h2>
+    </div>
+    
+      <br>
+      <div class="container">
+        <form action="enrol.php" method="POST">
+          <div class="row">
+            <div class="mb-3 col-lg-6">
+              <label for="fullname" class="form-label">Full name</label>
+              <input type="text" name="fullname" class="form control" placeholder="Enter your full name">
+            </div>
+            <div class="mb-3 col-lg-6">
+              <label for="phonenumber" class="form-label">Phone number</label>
+              <input type="tell"  name="phonenumber" class="formcontrol" placeholder="+2547....">
+            </div>
+          </div>
+          <div class="row">
+            <div class="mb-3 col-lg-6">
+              <label for="email" class="form-label">Email</label>
+              <input type="text"  name="email" class="formcontrol" placeholder="Enter email">
+            </div>
+            <div class="mb-3 col-lg-6">
+            <label for="gender" name="gender" class="form-label">What's your gender?</label>
+            <select class="formselect" name="gender">
+              <option selected>--select your gender--<option>
+              <option value="male">Male</option>
+              <option value="female">Female</option>
+              <option value="nonbinary">Non-binary</option>
+            <select>
+          </div>
+          </div>
+      <br>
+      <div class="row">
+        <h6>
+          <p>
+            In order to complete your registration to the bootcamp,you are required to select one course you will be undertaking.Please NOTE that this will be your learning track during the 2-weeks immersion.
+          </p>
+        </h6>
+      </div>
+      <br>
+      <div class="row">
+        <div class="mb-3 col-lg-6">
+          <label for="course" name="course" class="form-label">What's your preference course?</label>
+            <select class="formselect" name="course">
+              <option selected>--select your course--<option>
+              <option value="webdesign">Web Design</option>
+              <option value="webdesign">Data Science</option>
+              <option value="webdesign">Cyber security</option>
+            <select>
+      </div>
 
-       
-    <p>Looking for a place to kickstart your career in technology?Whether you're local,new in town or just cruising through we've got loads of great tips and events for you<p>
+      </div>
     
+      <div class="row">
+        <h6>
+        <p>You agree by providing your information you understand our data privacy and security policy outlined in our terms and conditions and Privacy policy statement</p>
+      </h6>
+      <div class="form-check">
+        <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+        <label class="form-check-label" for="flexCheckChecked">
+          Agree terms and conditions
+        </label>
+      </div> 
+      <button type="submit" name="submitbutton" class="btn btn-primary">submit application</button>
+    </div>
+    </div>
+    </form>
+      <div class="row">
+          <p>
+            Subscribe to get information,Latest news about Zalego Academy
+          </p>
+          <div class="mb-3 col-lg-6">
+            <input type="email" name="email" class="form-control" placeholder="Your email address">
+            <button type="submit"class="btn btn-primary">subscribe</button>
+          </div>
         
+          <hr>
+      <footer>
+      &copy;Company 2022
+      </footer>
+
     
-    <form>
-        <div class="row">
-  <div class="mb-3 col-lg-6">
-    <label for="exampleInputname" class="form-label">First Name</label>
-    <input type="name" class="form-control" id="exampleInputname" aria-describedby="Help">
-    <div id="nameHelp" class="form-text">Enter Your Name</div>
-  </div>
-  <div class="mb-3 col-lg-6">
-    <label for="exampleInputphonenumber" class="form-label">Phone Number</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-    <div id="no" class="form-text">+2547....</div>
-  </div>
-</div>
-<div class="row">
-  <div class="mb-3 col-lg-6">
-    <label for="exampleInputemail" class="form-label">Email Adress</label>
-    <input type="emailhelp" class="form-control" id="exampleInputemail">
-  </div>
-  <div class="mb-3 col-lg-6">
-    <label for="gender" class="form-label">Whats Your Gender</label>
-    <input type="emailhelp" class="form-control" id="exampleInputemail">
-  </div>
-</div>
-<p><p>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-    <label class="form-check-label" for="exampleCheck1">Check me out</label>
-  </div>
-  <button type="submit" class="btn btn-primary">Submit</button>
-</form>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.5/dist/umd/popper.min.js" integrity="sha384-Xe+8cL9oJa6tN/veChSP7q+mnSPaj5Bcu9mPX5F5xIGE0DVittaqT5lorf0EI7Vk" crossorigin="anonymous"></script>
     <script src="bootstrap-5.2.0-beta1-dist\bootstrap-5.2.0-beta1-dist/js/bootstrap.min.js"></script>
 

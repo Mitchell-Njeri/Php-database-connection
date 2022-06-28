@@ -5,6 +5,10 @@ h1{
 main{
     background-color: grey;
 }
-p{
-    text-alignment:centre;
+h6{
+    text-align: center;
+    justify-content: center;
+}
+h2{
+    text-align: center;
 }
